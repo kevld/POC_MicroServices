@@ -1,0 +1,6 @@
+@POC_MicroServices.Form_HostAddress = http://localhost:5271
+
+GET {{POC_MicroServices.Form_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

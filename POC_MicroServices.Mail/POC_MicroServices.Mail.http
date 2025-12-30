@@ -1,0 +1,6 @@
+@POC_MicroServices.Mail_HostAddress = http://localhost:5255
+
+GET {{POC_MicroServices.Mail_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

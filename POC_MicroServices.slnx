@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="ports.txt" />
+  </Folder>
+  <Project Path="POC_MicroServices.Form/POC_MicroServices.Form.csproj" Id="619865e8-e8fc-49d9-aec0-214eafce2e71" />
+  <Project Path="POC_MicroServices.Mail/POC_MicroServices.Mail.csproj" />
+  <Project Path="POC_MicroServices.WebApi/POC_MicroServices.WebApi.csproj" />
+  <Project Path="POC_MicroServices/POC_MicroServices.csproj" />
+  <Project Path="POC_MivroServices.Authentication/POC_MivroServices.Authentication.csproj" Id="6596b564-624a-4729-a992-4e2154f5a603" />
+</Solution>

@@ -1,0 +1,6 @@
+@POC_MivroServices.Authentication_HostAddress = http://localhost:5139
+
+GET {{POC_MivroServices.Authentication_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
