@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using System.Text.RegularExpressions;
 
 namespace POC_MicroServices.Mail.Hub
 {
-    public class NotificationHub : DynamicHub
+    public class NotificationHub : Microsoft.AspNetCore.SignalR.Hub
     {
         private readonly IHubContext<NotificationHub> _hubContext;
 

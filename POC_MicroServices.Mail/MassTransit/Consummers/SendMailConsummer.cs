@@ -33,7 +33,7 @@ namespace POC_MicroServices.Mail.MassTransit.Consummers
                 _context.Mails.Add(me);
                 _context.SaveChanges();
 
-                await _hubContext.Clients.All.SendAsync("notification", "Notification mail sent");
+                await _hubContext.Clients.All.SendAsync("notification", "Notification : Mail sent, woooooooooooohooooooooooo");
             }
             catch (Exception e)
             {

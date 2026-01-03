@@ -1,6 +1,6 @@
 import { Inject, Injectable } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
-import { LoginAction, RegisterAction, SendMailAction } from "../actions/main.actions";
+import { LoginAction, RegisterAction, SendMailAction, UpdateLastMessageAction } from "../actions/main.actions";
 import { MainService } from "../services/main-service";
 import { retry, tap } from "rxjs";
 
@@ -21,7 +21,7 @@ export class MainStateModel {
 })
 @Injectable()
 export class MainState {
-    constructor(private service: MainService) {}
+    constructor(private service: MainService) { }
 
     @Selector()
     static lastMessage(state: MainStateModel) {
@@ -61,7 +61,7 @@ export class MainState {
     }
 
     @Action(SendMailAction)
-    sendMail({patchState}: StateContext<MainStateModel>, action: SendMailAction) {
+    sendMail({ patchState }: StateContext<MainStateModel>, action: SendMailAction) {
         const p = action.payload;
 
         return this.service.sendMail(p.to, p.body).pipe(
@@ -72,5 +72,14 @@ export class MainState {
                 });
             })
         );
+    }
+
+    @Action(UpdateLastMessageAction)
+    updateLastMessage({ patchState }: StateContext<MainStateModel>, action: UpdateLastMessageAction) {
+        const p = action.payload;
+
+        patchState({
+            lastMessage: p.message
+        });
     }
 }

@@ -42,16 +42,17 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/hub",
-      "DownstreamScheme": "wss",
+      "DownstreamPathTemplate": "/hub/{**catchAll}",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
           "Port": 7293
         }
       ],
-      "UpstreamPathTemplate": "/hub",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+      "UpstreamPathTemplate": "/hub/{**catchAll}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ],
+      "UseWebSockets": true
     }
   ]
 }

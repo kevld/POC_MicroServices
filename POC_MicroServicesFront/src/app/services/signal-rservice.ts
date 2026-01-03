@@ -9,13 +9,13 @@ import { UpdateLastMessageAction } from '../actions/main.actions';
 export class SignalRService {
   private hubConnection!: signalR.HubConnection;
 
-  private readonly rootUrl: string = 'https://localhost:7116/hub';
+  private readonly rootUrl: string = 'https://localhost:7293/hub';
 
   private readonly store: Store = inject(Store);
 
   public startConnection = () => {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl(this.rootUrl) // URL of the SignalR hub
+      .withUrl(this.rootUrl, { skipNegotiation: false, transport: signalR.HttpTransportType.WebSockets })
       .build();
 
     this.hubConnection
