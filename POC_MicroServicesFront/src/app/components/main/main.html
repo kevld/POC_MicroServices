@@ -1,0 +1,31 @@
+<fieldset>
+    <legend>Register</legend>
+    <div>
+        <input type="text" [(ngModel)]="registerName" placeholder="Username" />
+        <input type="password" [(ngModel)]="registerPwd" placeholder="Password" />
+        <input type="email" [(ngModel)]="registerEmail" placeholder="Email" />
+        <button type="button" (click)="register()">Sign Up</button>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>Login</legend>
+    <div>
+        <input type="text" placeholder="Username" [(ngModel)]="loginName" />
+        <input type="password" placeholder="Password" [(ngModel)]="loginPwd" />
+        <button type="button" (click)="login()">Log In</button>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>Send mail</legend>
+    <div>
+        <input type="email" placeholder="To" [(ngModel)]="sendTo" />
+        <textarea placeholder="Message" [(ngModel)]="sendMsg"></textarea>
+        <button type="button" (click)="send()">Send</button>
+    </div>
+</fieldset>
+<div>
+    Last message : <br/>
+    {{ lastMessage$ | async }}
+</div>

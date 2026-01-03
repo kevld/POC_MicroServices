@@ -1,6 +1,6 @@
-﻿namespace POC_MicroServices.Mail.MassTransit.Interfaces
+﻿namespace MassTransit.Interfaces
 {
-    public interface ISendMailConsummer
+    public interface ISendMail
     {
         public string To { get; set; }
 

@@ -6,39 +6,36 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7233
+          "Port": 7009
         }
       ],
-      "UpstreamPathTemplate": "/auth",
-      "UpstreamHttpMethod": [ "POST", "PUT", "GET" ]
+      "UpstreamPathTemplate": "/auth/Login",
+      "UpstreamHttpMethod": [ "POST" ]
     },
     {
-      "DownstreamPathTemplate": "/api/v1/WeatherForecast",
+      "DownstreamPathTemplate": "/api/Authenticate/Register",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7000
+          "Port": 7009
         }
       ],
-      "UpstreamPathTemplate": "/city",
-      "UpstreamHttpMethod": [ "POST", "PUT", "GET" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamPathTemplate": "/auth/Register",
+      "UpstreamHttpMethod": [ "POST" ]
     },
+
     {
-      "DownstreamPathTemplate": "/api/v1/Issue",
+      "DownstreamPathTemplate": "/api/FormValidation/ValidForm",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7014
+          "Port": 7143
         }
       ],
-      "UpstreamPathTemplate": "/issue",
-      "UpstreamHttpMethod": [ "POST", "PUT", "GET" ],
+      "UpstreamPathTemplate": "/form",
+      "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
@@ -50,10 +47,10 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7147
+          "Port": 7293
         }
       ],
-      "UpstreamPathTemplate": "/status",
+      "UpstreamPathTemplate": "/hub",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
     }
   ]

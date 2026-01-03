@@ -1,33 +1,44 @@
 ﻿using MassTransit;
-using POC_MicroServices.Mail.MassTransit.Messages;
+using MassTransit.Interfaces;
+using Microsoft.AspNetCore.SignalR;
+using POC_MicroServices.Mail.Hub;
 using POC_MicroServices.Mail.Repository;
 using POC_MicroServices.Mail.Repository.Models;
 
 namespace POC_MicroServices.Mail.MassTransit.Consummers
 {
-    public class SendMailConsummer : IConsumer<IMailMessage>
+    public class SendMailConsummer : IConsumer<ISendMail>
     {
         private readonly MailDbContext _context;
+        private readonly IHubContext<NotificationHub> _hubContext;
 
-        public SendMailConsummer(MailDbContext context)
+        public SendMailConsummer(MailDbContext context, IHubContext<NotificationHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
-        public Task Consume(ConsumeContext<IMailMessage> context)
+        public async Task Consume(ConsumeContext<ISendMail> context)
         {
-            IMailMessage message = context.Message;
-            MailEntity me = new()
+            try
             {
-                To = message.To,
-                Content = message.Content,
-                SendDate = message.SendDate,
-            };
+                ISendMail message = context.Message;
+                MailEntity me = new()
+                {
+                    To = message.To,
+                    Content = message.Content,
+                    SendDate = DateTime.Now,
+                };
 
-            _context.Mails.Add(me);
-            _context.SaveChanges();
+                _context.Mails.Add(me);
+                _context.SaveChanges();
 
-            return Task.CompletedTask;
+                await _hubContext.Clients.All.SendAsync("notification", "Notification mail sent");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }
